@@ -61,22 +61,6 @@
   photosGrid = [MGBox boxWithSize:photosGridSize];
   photosGrid.contentLayoutMode = MGLayoutGridStyle;
   [self.scroller.boxes addObject:photosGrid];
-//
-//  // the tables grid
-//  CGSize tablesGridSize = phone ? IPHONE_TABLES_GRID : IPAD_TABLES_GRID;
-//  tablesGrid = [MGBox boxWithSize:tablesGridSize];
-//  tablesGrid.contentLayoutMode = MGLayoutGridStyle;
-//  [self.scroller.boxes addObject:tablesGrid];
-//
-//  // the features table
-//  table1 = MGBox.box;
-//  [tablesGrid.boxes addObject:table1];
-//  table1.sizingMode = MGResizingShrinkWrap;
-//
-//  // the subsections table
-//  table2 = MGBox.box;
-//  [tablesGrid.boxes addObject:table2];
-//  table2.sizingMode = MGResizingShrinkWrap;
 
   // add photo boxes to the grid
   int initialImages = phone ? IPHONE_INITIAL_IMAGES : IPAD_INITIAL_IMAGES;
@@ -85,16 +69,6 @@
     [photosGrid.boxes addObject:[self photoBoxFor:photo]];
   }
 
-//  // add a blank "add photo" box
-//  [photosGrid.boxes addObject:self.photoAddBox];
-
-//  // load some table sections
-//  if (phone) {
-//    [self loadIntroSection];
-//  } else {
-//    [self loadLayoutFeaturesSection:NO];
-//    [self loadConviniFeaturesSection:NO];
-//  }
   [tablesGrid layout];
 }
 
