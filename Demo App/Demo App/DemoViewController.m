@@ -13,7 +13,7 @@
 #import "PhotoBox.h"
 
 #define TOTAL_IMAGES           28
-#define IPHONE_INITIAL_IMAGES  3
+#define IPHONE_INITIAL_IMAGES  7
 #define IPAD_INITIAL_IMAGES    11
 
 #define ROW_SIZE               (CGSize){304, 44}
@@ -136,62 +136,9 @@
   // make the photo box
   PhotoBox *box = [PhotoBox photoBoxFor:i size:[self photoBoxSize]];
 
-  // remove the box when tapped
-  __weak id wbox = box;
-  box.onTap = ^{
-    MGBox *section = (id)box.parentBox;
-
-    // remove
-    [section.boxes removeObject:wbox];
-
-    // if we don't have an odd box, and there's photos left, add one
-    if (![self photoBoxWithTag:-1] && [self randomMissingPhoto]) {
-      [section.boxes addObject:self.photoAddBox];
-    }
-
-    // animate
-    [section layoutWithSpeed:0.3 completion:nil];
-    [self.scroller layoutWithSpeed:0.3 completion:nil];
-  };
-
   return box;
 }
 
-- (PhotoBox *)photoAddBox {
-
-  // make the box
-  PhotoBox *box = [PhotoBox photoAddBoxWithSize:[self photoBoxSize]];
-
-  // deal with taps
-  __weak MGBox *wbox = box;
-  box.onTap = ^{
-
-    // a new photo number
-    int photo = [self randomMissingPhoto];
-
-    // replace the add box with a photo loading box
-    int idx = [photosGrid.boxes indexOfObject:wbox];
-    [photosGrid.boxes removeObject:wbox];
-    [photosGrid.boxes insertObject:[self photoBoxFor:photo] atIndex:idx];
-    [photosGrid layout];
-
-    // all photos are in now?
-    if (![self randomMissingPhoto]) {
-      return;
-    }
-
-    // add another add box
-    PhotoBox *addBox = self.photoAddBox;
-    [photosGrid.boxes addObject:addBox];
-
-    // animate the section and the scroller
-    [photosGrid layoutWithSpeed:0.3 completion:nil];
-    [self.scroller layoutWithSpeed:0.3 completion:nil];
-    [self.scroller scrollToView:addBox withMargin:8];
-  };
-
-  return box;
-}
 
 #pragma mark - Photo Box helpers
 
@@ -280,13 +227,6 @@
   [layout.topLines addObject:grids];
   grids.onTap = ^{
     [self loadGridLayoutSection];
-  };
-
-  MGLineStyled *tables = [MGLineStyled lineWithLeft:@"Table layouts" right:arrow
-      size:ROW_SIZE];
-  [layout.topLines addObject:tables];
-  tables.onTap = ^{
-    [self loadTableLayoutSection];
   };
 
   MGLineStyled *anims = [MGLineStyled lineWithLeft:@"Animated layout" right:arrow
@@ -427,57 +367,6 @@
   MGLineStyled *line = [MGLineStyled multilineWithText:waffle font:nil width:304
       padding:UIEdgeInsetsMake(16, 16, 16, 16)];
   [section.topLines addObject:line];
-
-  // animate
-  [table2 layoutWithSpeed:0.3 completion:nil];
-  [self.scroller layoutWithSpeed:0.3 completion:nil];
-
-  // scroll
-  [self.scroller scrollToView:section withMargin:8];
-}
-
-- (void)loadTableLayoutSection {
-
-  // empty table2 out
-  [table2.boxes removeAllObjects];
-
-  // make the section
-  MGTableBoxStyled *section = MGTableBoxStyled.box;
-  [table2.boxes addObject:section];
-
-  // header
-  MGLineStyled
-      *head1 = [MGLineStyled lineWithLeft:@"Tables" right:nil size:ROW_SIZE];
-  [section.topLines addObject:head1];
-  head1.font = HEADER_FONT;
-
-  id waffle1 = @"Similar to **UITableView**, but without the awkward "
-      "design patterns.\n\n"
-      "Create a table section, add some rows to it, and you're done.\n\n"
-      "Add or remove rows or sections simply by adding/removing them from their "
-      "containing box.|mush";
-
-  // stuff
-  MGLineStyled *waf1 = [MGLineStyled multilineWithText:waffle1 font:nil width:304
-      padding:UIEdgeInsetsMake(16, 16, 16, 16)];
-  [section.topLines addObject:waf1];
-
-  // header
-  MGLineStyled
-      *head2 = [MGLineStyled lineWithLeft:@"Table Rows" right:nil size:ROW_SIZE];
-  [section.topLines addObject:head2];
-  head2.font = HEADER_FONT;
-
-  id waffle2 = @"**MGLine** provides a quick, no nonsense interface for building "
-      "table rows with left, middle, and right content, as "
-      "well as rows with multiline text.\n\n"
-      "**NSString** and **UIImage** objects can be added directly to an **MGLine** "
-      "and will be automatically wrapped in a **UILabel** or **UIImageView**.|mush";
-
-  // stuff
-  MGLineStyled *waf2 = [MGLineStyled multilineWithText:waffle2 font:nil width:304
-      padding:UIEdgeInsetsMake(16, 16, 16, 16)];
-  [section.topLines addObject:waf2];
 
   // animate
   [table2 layoutWithSpeed:0.3 completion:nil];

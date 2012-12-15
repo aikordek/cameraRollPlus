@@ -12,7 +12,7 @@
 
 @property (nonatomic, weak) IBOutlet MGScrollView *scroller;
 
-- (PhotoBox *)photoAddBox;
+
 - (BOOL)allPhotosLoaded;
 
 @end
