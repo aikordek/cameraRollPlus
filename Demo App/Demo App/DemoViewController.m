@@ -61,6 +61,24 @@
   photosGrid = [MGBox boxWithSize:photosGridSize];
   photosGrid.contentLayoutMode = MGLayoutGridStyle;
   [self.scroller.boxes addObject:photosGrid];
+    
+    if (!assetsLibrary) {
+        assetsLibrary = [[ALAssetsLibrary alloc] init];
+    }
+    if (!groups) {
+        groups = [[NSMutableArray alloc] init];
+    } else {
+        [groups removeAllObjects];
+    }
+    
+//    ALAssetsLibraryGroupsEnumerationResultsBlock listGroupBlock = ^(ALAssetsGroup *group, BOOL *stop) {
+//        
+//        if (group) {
+//            [groups addObject:group];
+//        } else {
+//            //[self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+//        }
+//    };
 
   // add photo boxes to the grid
   int initialImages = phone ? IPHONE_INITIAL_IMAGES : IPAD_INITIAL_IMAGES;

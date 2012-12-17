@@ -10,6 +10,7 @@
 		3307137FAF1435B4ECA15024 /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 330715EF12EC184937E5FA7E /* add@2x.png */; };
 		33071941672C2D8830257E32 /* PhotoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 3307132EC7E612F5B422461B /* PhotoBox.m */; };
 		330719F40060E9DDC87FB9C7 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 33071767DF74FC852F68B7FE /* add.png */; };
+		68F4ADA4167FBDC40023B980 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68F4ADA3167FBDC30023B980 /* AVFoundation.framework */; };
 		C92E023A164E0B4500275DEC /* MGLineStyled.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E0238164E0B4500275DEC /* MGLineStyled.m */; };
 		C92E023E164E0B7200275DEC /* MGMushParser.m in Sources */ = {isa = PBXBuildFile; fileRef = C92E023C164E0B7200275DEC /* MGMushParser.m */; };
 		C92E0240164E0BDC00275DEC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92E023F164E0BDC00275DEC /* CoreText.framework */; };
@@ -49,6 +50,7 @@
 		330714AD1C35930E7498DCE3 /* PhotoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBox.h; sourceTree = "<group>"; };
 		330715EF12EC184937E5FA7E /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
 		33071767DF74FC852F68B7FE /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		68F4ADA3167FBDC30023B980 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C92E0238164E0B4500275DEC /* MGLineStyled.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGLineStyled.m; sourceTree = "<group>"; };
 		C92E0239164E0B4500275DEC /* MGLineStyled.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGLineStyled.h; sourceTree = "<group>"; };
 		C92E023C164E0B7200275DEC /* MGMushParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGMushParser.m; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F4ADA4167FBDC40023B980 /* AVFoundation.framework in Frameworks */,
 				C92E0240164E0BDC00275DEC /* CoreText.framework in Frameworks */,
 				C9968F6D1610EDEF00D113FB /* QuartzCore.framework in Frameworks */,
 				C9968EBB1610CDEF00D113FB /* UIKit.framework in Frameworks */,
@@ -136,6 +139,7 @@
 		C9968EAB1610CDEF00D113FB = {
 			isa = PBXGroup;
 			children = (
+				68F4ADA3167FBDC30023B980 /* AVFoundation.framework */,
 				C9968EFA1610D3A600D113FB /* MGBox */,
 				C9968EC01610CDEF00D113FB /* Demo app */,
 				C9968EB91610CDEF00D113FB /* Frameworks */,

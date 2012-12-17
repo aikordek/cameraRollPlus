@@ -88,7 +88,11 @@
 #pragma mark - Photo box loading
 
 - (void)loadPhoto {
-
+    
+    /*
+     * TODO: implement retreiving images from memory here!
+     */
+     
   // photo url
   id photosDir = @"http://bigpaua.com/images/MGBox";
   id fullPath = [NSString stringWithFormat:@"%@/%d.jpg", photosDir, self.tag];
